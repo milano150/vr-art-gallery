@@ -2,149 +2,284 @@
 <html>
 
 <head>
-  <meta charset="utf-8" />
-  <title>VR Art Gallery - Young Innovators STEM Lab</title>
-  <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
-  <style>
-    body {
-      margin: 0;
-      overflow: hidden;
-      font-family: Arial, sans-serif;
-    }
-    #info {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      color: white;
-      background: rgba(0, 0, 0, 0.7);
-      padding: 15px;
-      border-radius: 5px;
-      max-width: 300px;
-      font-size: 14px;
-      z-index: 100;
-    }
-    #info h2 {
-      margin: 0 0 10px 0;
-      font-size: 18px;
-    }
-    #info p {
-      margin: 5px 0;
-    }
-  </style>
+<meta charset="utf-8"/>
+<title>VR Art Gallery - Young Innovators STEM Lab</title>
+<script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
+
+<style>
+body{
+margin:0;
+overflow:hidden;
+font-family:'Georgia',serif;
+}
+
+#info{
+position:absolute;
+top:20px;
+left:20px;
+color:#2c2c2c;
+background:rgba(245,240,235,0.95);
+padding:20px;
+border-radius:3px;
+border:2px solid #8b7355;
+max-width:320px;
+font-size:14px;
+z-index:100;
+box-shadow:0 4px 6px rgba(0,0,0,0.2);
+}
+
+#info h2{
+margin:0 0 12px 0;
+font-size:20px;
+color:#5d4e37;
+font-weight:bold;
+}
+</style>
 </head>
 
 <body>
-  <div id="info">
-    <h2>Welcome to VR Art Gallery</h2>
-    <p>Use your VR controller or mouse to explore the gallery.</p>
-    <p id="current-art">Move around to see artworks</p>
-  </div>
 
-  <a-scene>
-    <!-- Environment Setup -->
-    <a-assets>
-      <img id="mona-lisa" src="pictures/mona_lisa.jpg" crossorigin="anonymous">
-      <img id="girl-pearl" src="pictures/girl_with_pearl_earring.jpg" crossorigin="anonymous">
-      <img id="last-supper" src="pictures/the_last_supper.jpg" crossorigin="anonymous">
-      <img id="the-scream" src="pictures/the_scream.png" crossorigin="anonymous">
-    </a-assets>
+<div id="info">
+<h2>Asian Art Gallery</h2>
+<p>Welcome to the traditional Eastern art collection</p>
+<p id="current-art">Walk through the gallery to explore the artworks</p>
+</div>
 
-    <!-- Sky and Ground -->
-    <a-sky color="#1a1a2e"></a-sky>
-    <a-plane position="0 -1.5 0" rotation="-90 0 0" width="50" height="50" color="#2d2d44"></a-plane>
 
-    <!-- Lighting -->
-    <a-light type="ambient" color="#fff" intensity="0.6"></a-light>
-    <a-light type="directional" color="#fff" intensity="0.8" position="5 10 10"></a-light>
-    <a-light type="point" color="#ff6b6b" intensity="0.5" position="-10 5 -10"></a-light>
-    <a-light type="point" color="#4ecdc4" intensity="0.5" position="10 5 10"></a-light>
+<a-scene background="color:#2d2415">
 
-    <!-- Gallery Walls -->
-    <a-plane position="0 0 -20" width="40" height="15" color="#16213e"></a-plane>
-    <a-plane position="-20 0 0" rotation="0 90 0" width="40" height="15" color="#0f3460"></a-plane>
-    <a-plane position="20 0 0" rotation="0 90 0" width="40" height="15" color="#0f3460"></a-plane>
-    <a-plane position="0 0 20" width="40" height="15" color="#16213e"></a-plane>
+<!-- Assets -->
+<a-assets>
 
-    <!-- Gallery Title -->
-    <a-text value="YOUNG INNOVATORS" position="0 6 -19.5" align="center" color="#ff6b6b" 
-      font="mozillavr" width="15" height="5" anchor="center" scale="1.5 1.5 1.5"></a-text>
-    <a-text value="ART GALLERY" position="0 5 -19.5" align="center" color="#4ecdc4" 
-      font="mozillavr" width="15" height="5" anchor="center" scale="1.2 1.2 1.2"></a-text>
+<img id="asian-1" src="pictures/asian/asian_1.jpg">
+<img id="asian-2" src="pictures/asian/asian_2.jpg">
+<img id="asian-3" src="pictures/asian/asian_3.jpg">
+<img id="asian-4" src="pictures/asian/asian_4.jpg">
+<img id="asian-5" src="pictures/asian/asian_5.jpg">
 
-    <!-- Art Piece 1: Mona Lisa -->
-    <a-plane position="-8 2 -15" width="5" height="6" material="src: #mona-lisa"></a-plane>
-    <a-text value="Mona Lisa" position="-8 -1 -14.9" align="center" color="#fff" 
-      font="mozillavr" width="6" height="2" anchor="center" scale="0.6 0.6 0.6"></a-text>
-    <a-text value="Leonardo da Vinci, 1503-1519" position="-8 -1.8 -14.9" align="center" color="#aaa" 
-      font="mozillavr" width="7" height="2" anchor="center" scale="0.4 0.4 0.4"></a-text>
+<img id="wood-floor" src="pictures/textures/dark_wood_floor.jpg">
+<img id="temple-wall" src="pictures/textures/red_wall.jpg">
+<img id="temple-ceiling" src="pictures/textures/ceiling.jpg">
 
-    <!-- Art Piece 2: Girl with Pearl Earring -->
-    <a-plane position="8 2 -15" width="5" height="6" material="src: #girl-pearl"></a-plane>
-    <a-text value="Girl with Pearl Earring" position="8 -1 -14.9" align="center" color="#fff" 
-      font="mozillavr" width="6" height="2" anchor="center" scale="0.6 0.6 0.6"></a-text>
-    <a-text value="Johannes Vermeer, 1665" position="8 -1.8 -14.9" align="center" color="#aaa" 
-      font="mozillavr" width="7" height="2" anchor="center" scale="0.4 0.4 0.4"></a-text>
+</a-assets>
 
-    <!-- Art Piece 3: The Last Supper -->
-    <a-plane position="-15 2 0" rotation="0 90 0" width="5" height="6" material="src: #last-supper"></a-plane>
-    <a-text value="The Last Supper" position="-14.9 -1 0" rotation="0 90 0" align="center" color="#fff" 
-      font="mozillavr" width="6" height="2" anchor="center" scale="0.6 0.6 0.6"></a-text>
-    <a-text value="Leonardo da Vinci, 1495-1498" position="-14.9 -1.8 0" rotation="0 90 0" align="center" color="#aaa" 
-      font="mozillavr" width="7" height="2" anchor="center" scale="0.4 0.4 0.4"></a-text>
 
-    <!-- Art Piece 4: The Scream -->
-    <a-plane position="15 2 0" rotation="0 90 0" width="5" height="6" material="src: #the-scream"></a-plane>
-    <a-text value="The Scream" position="14.9 -1 0" rotation="0 90 0" align="center" color="#fff" 
-      font="mozillavr" width="6" height="2" anchor="center" scale="0.6 0.6 0.6"></a-text>
-    <a-text value="Edvard Munch, 1893" position="14.9 -1.8 0" rotation="0 90 0" align="center" color="#aaa" 
-      font="mozillavr" width="7" height="2" anchor="center" scale="0.4 0.4 0.4"></a-text>
+<!-- Lighting -->
+<a-light type="ambient" intensity="0.7" color="#ffd700"></a-light>
+<a-light type="directional" position="0 10 0" intensity="1.2" color="#ffe8d6"></a-light>
 
-    <!-- Center Pedestal with Rotating Sculpture -->
-    <a-entity id="pedestal" position="0 0 0">
-      <a-box position="0 0 0" width="3" height="0.5" depth="3" color="#4ecdc4"></a-box>
-      <a-box position="0 1.5 0" width="2" height="2" depth="2" color="#ff6b6b" animation="property: rotation; to: 0 360 0; dur: 8000; easing: linear; loop: true"></a-box>
-      <a-octahedron position="0 3 0" scale="0.8 0.8 0.8" color="#ffd93d" animation="property: position; to: 0 3.5 0; dur: 2000; easing: easeInOutQuad; loop: true; dir: alternate"></a-octahedron>
-    </a-entity>
 
-    <!-- Camera with Controller Support -->
-    <a-entity camera look-controls wasd-controls position="0 1.6 5">
-      <a-cursor></a-cursor>
-    </a-entity>
+<!-- Spotlights -->
+<a-light type="spot" position="-5.9 6 -12" rotation="-70 0 0" intensity="2.5" color="#ffdd99"></a-light>
+<a-light type="spot" position="-5.9 6 -30" rotation="-70 0 0" intensity="2.5" color="#ffdd99"></a-light>
 
-  </a-scene>
+<a-light type="spot" position="5.9 6 -12" rotation="-70 0 0" intensity="2.5" color="#ffdd99"></a-light>
+<a-light type="spot" position="5.9 6 -30" rotation="-70 0 0" intensity="2.5" color="#ffdd99"></a-light>
 
-  <script>
-    // Gallery info updates
-    const infoElement = document.getElementById('current-art');
-    const artpieces = [
-      { title: 'Mona Lisa', desc: 'Leonardo da Vinci, 1503-1519' },
-      { title: 'Girl with Pearl Earring', desc: 'Johannes Vermeer, 1665' },
-      { title: 'The Last Supper', desc: 'Leonardo da Vinci, 1495-1498' },
-      { title: 'The Scream', desc: 'Edvard Munch, 1893' }
-    ];
+<a-light type="spot" position="0 6 -39" rotation="-70 0 0" intensity="2.5" color="#ffdd99"></a-light>
 
-    // Update info based on camera position periodically
-    setInterval(() => {
-      const camera = document.querySelector('[camera]');
-      const pos = camera.getAttribute('position');
-      
-      let closest = 0;
-      let minDist = Infinity;
-      const positions = [[-8, 0, -15], [8, 0, -15], [-15, 0, 0], [15, 0, 0]];
-      
-      positions.forEach((p, i) => {
-        const dist = Math.sqrt(Math.pow(pos.x - p[0], 2) + Math.pow(pos.z - p[2], 2));
-        if (dist < minDist) {
-          minDist = dist;
-          closest = i;
-        }
-      });
-      
-      if (minDist < 10) {
-        infoElement.innerHTML = `<strong>${artpieces[closest].title}</strong><br>${artpieces[closest].desc}`;
-      }
-    }, 500);
-  </script>
+
+<!-- Lantern Lights -->
+<a-light type="point" position="-5.9 6.5 -12" intensity="1.2" color="#ffcc66" distance="8"></a-light>
+<a-light type="point" position="-5.9 6.5 -30" intensity="1.2" color="#ffcc66" distance="8"></a-light>
+<a-light type="point" position="5.9 6.5 -12" intensity="1.2" color="#ffcc66" distance="8"></a-light>
+<a-light type="point" position="5.9 6.5 -30" intensity="1.2" color="#ffcc66" distance="8"></a-light>
+<a-light type="point" position="0 6 -39" intensity="1.2" color="#ffcc66" distance="8"></a-light>
+
+
+
+<!-- FLOOR (TEXTURED WOOD) -->
+<a-plane
+position="0 0 0"
+rotation="-90 0 0"
+width="12"
+height="80"
+material="src:#wood-floor; repeat:6 40; roughness:0.6">
+</a-plane>
+
+
+
+<!-- CEILING (DARK TEMPLE WOOD) -->
+<a-plane
+position="0 7 0"
+rotation="90 0 0"
+width="12"
+height="80"
+material="src:#temple-ceiling; repeat:6 40">
+</a-plane>
+
+
+
+<!-- LEFT WALL -->
+<a-plane
+position="-6 3.5 0"
+rotation="0 90 0"
+width="80"
+height="8"
+material="src:#temple-wall; repeat:30 4">
+</a-plane>
+
+
+
+<!-- RIGHT WALL -->
+<a-plane
+position="6 3.5 0"
+rotation="0 -90 0"
+width="80"
+height="8"
+material="src:#temple-wall; repeat:30 4">
+</a-plane>
+
+
+
+<!-- END WALL -->
+<a-plane
+position="0 3.5 -40"
+width="12"
+height="8"
+material="src:#temple-wall; repeat:6 3">
+</a-plane>
+
+
+
+<!-- Title -->
+<a-text
+value="Asian Art Gallery"
+position="0 5 -5"
+align="center"
+color="#d4af37"
+scale="2 2 2">
+</a-text>
+
+
+
+<!-- LEFT WALL PAINTINGS -->
+
+<a-plane
+position="-5.95 3 -12"
+rotation="0 90 0"
+width="4"
+height="3.5"
+material="src:#asian-1">
+</a-plane>
+
+<a-plane
+position="-5.95 3.5 -30"
+rotation="0 90 0"
+width="6.5"
+height="2"
+material="src:#asian-2">
+</a-plane>
+
+
+
+<!-- RIGHT WALL PAINTINGS -->
+
+<a-plane
+position="5.95 3 -12"
+rotation="0 -90 0"
+width="2.5"
+height="4.5"
+material="src:#asian-3">
+</a-plane>
+
+<a-plane
+position="5.95 3 -30"
+rotation="0 -90 0"
+width="5.5"
+height="2.5"
+material="src:#asian-4">
+</a-plane>
+
+
+
+<!-- END WALL PAINTING -->
+
+<a-plane
+position="0 2.5 -39"
+width="5.5"
+height="2.5"
+material="src:#asian-5">
+</a-plane>
+
+
+
+<!-- Camera -->
+<a-entity camera look-controls wasd-controls position="0 1.6 5">
+<a-cursor></a-cursor>
+</a-entity>
+
+</a-scene>
+
+
+
+<script>
+
+const infoElement=document.getElementById('current-art');
+
+const artpieces=[
+{
+title:'The Great Wave off Kanagawa',
+desc:'Katsushika Hokusai (1760–1849)<br>c.1831 Ukiyo-e woodblock print<br>From the series Thirty-Six Views of Mount Fuji'
+},
+{
+title:'Dwelling in the Fuchun Mountains',
+desc:'Huang Gongwang (1269–1354)<br>Yuan Dynasty ink landscape scroll'
+},
+{
+title:'Lady with a Fan',
+desc:'Raja Ravi Varma (1848–1906)<br>Oil painting blending Indian and European styles'
+},
+{
+title:'Pine Trees',
+desc:'Hasegawa Tōhaku (1539–1610)<br>Minimalist Japanese ink screen painting'
+},
+{
+title:'Along the River During the Qingming Festival',
+desc:'Zhang Zeduan (1085–1145)<br>Panoramic scroll of Song Dynasty city life'
+}
+];
+
+
+setInterval(()=>{
+
+const camera=document.querySelector('[camera]');
+const pos=camera.getAttribute('position');
+
+let closest=0;
+let minDist=Infinity;
+
+const positions=[
+[-5.9,0,-12],
+[-5.9,0,-30],
+[5.9,0,-12],
+[5.9,0,-30],
+[0,0,-39]
+];
+
+positions.forEach((p,i)=>{
+
+const dist=Math.sqrt(
+Math.pow(pos.x-p[0],2)+
+Math.pow(pos.z-p[2],2)
+);
+
+if(dist<minDist){
+minDist=dist;
+closest=i;
+}
+
+});
+
+if(minDist<10){
+infoElement.innerHTML=
+`<strong>${artpieces[closest].title}</strong><br>${artpieces[closest].desc}`;
+}
+
+},500);
+
+</script>
+
+
 </body>
-
 </html>
