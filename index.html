@@ -44,6 +44,9 @@
     <!-- Environment Setup -->
     <a-assets>
       <img id="mona-lisa" src="pictures/mona_lisa.jpg" crossorigin="anonymous">
+      <img id="girl-pearl" src="pictures/girl_with_pearl_earring.jpg" crossorigin="anonymous">
+      <img id="last-supper" src="pictures/the_last_supper.jpg" crossorigin="anonymous">
+      <img id="the-scream" src="pictures/the_scream.png" crossorigin="anonymous">
     </a-assets>
 
     <!-- Sky and Ground -->
@@ -75,25 +78,25 @@
     <a-text value="Leonardo da Vinci, 1503-1519" position="-8 -1.8 -14.9" align="center" color="#aaa" 
       font="mozillavr" width="7" height="2" anchor="center" scale="0.4 0.4 0.4"></a-text>
 
-    <!-- Art Piece 2: Mona Lisa Study -->
-    <a-plane position="8 2 -15" width="5" height="6" material="src: #mona-lisa"></a-plane>
-    <a-text value="Mona Lisa" position="8 -1 -14.9" align="center" color="#fff" 
+    <!-- Art Piece 2: Girl with Pearl Earring -->
+    <a-plane position="8 2 -15" width="5" height="6" material="src: #girl-pearl"></a-plane>
+    <a-text value="Girl with Pearl Earring" position="8 -1 -14.9" align="center" color="#fff" 
       font="mozillavr" width="6" height="2" anchor="center" scale="0.6 0.6 0.6"></a-text>
-    <a-text value="The enigmatic smile of the Renaissance" position="8 -1.8 -14.9" align="center" color="#aaa" 
+    <a-text value="Johannes Vermeer, 1665" position="8 -1.8 -14.9" align="center" color="#aaa" 
       font="mozillavr" width="7" height="2" anchor="center" scale="0.4 0.4 0.4"></a-text>
 
-    <!-- Art Piece 3: Mona Lisa Tribute -->
-    <a-plane position="-15 2 0" rotation="0 90 0" width="5" height="6" material="src: #mona-lisa"></a-plane>
-    <a-text value="Mona Lisa" position="-14.9 -1 0" rotation="0 90 0" align="center" color="#fff" 
+    <!-- Art Piece 3: The Last Supper -->
+    <a-plane position="-15 2 0" rotation="0 90 0" width="5" height="6" material="src: #last-supper"></a-plane>
+    <a-text value="The Last Supper" position="-14.9 -1 0" rotation="0 90 0" align="center" color="#fff" 
       font="mozillavr" width="6" height="2" anchor="center" scale="0.6 0.6 0.6"></a-text>
-    <a-text value="One of history's most iconic paintings" position="-14.9 -1.8 0" rotation="0 90 0" align="center" color="#aaa" 
+    <a-text value="Leonardo da Vinci, 1495-1498" position="-14.9 -1.8 0" rotation="0 90 0" align="center" color="#aaa" 
       font="mozillavr" width="7" height="2" anchor="center" scale="0.4 0.4 0.4"></a-text>
 
-    <!-- Art Piece 4: Mona Lisa Classic -->
-    <a-plane position="15 2 0" rotation="0 90 0" width="5" height="6" material="src: #mona-lisa"></a-plane>
-    <a-text value="Mona Lisa" position="14.9 -1 0" rotation="0 90 0" align="center" color="#fff" 
+    <!-- Art Piece 4: The Scream -->
+    <a-plane position="15 2 0" rotation="0 90 0" width="5" height="6" material="src: #the-scream"></a-plane>
+    <a-text value="The Scream" position="14.9 -1 0" rotation="0 90 0" align="center" color="#fff" 
       font="mozillavr" width="6" height="2" anchor="center" scale="0.6 0.6 0.6"></a-text>
-    <a-text value="Housed in the Louvre Museum, Paris" position="14.9 -1.8 0" rotation="0 90 0" align="center" color="#aaa" 
+    <a-text value="Edvard Munch, 1893" position="14.9 -1.8 0" rotation="0 90 0" align="center" color="#aaa" 
       font="mozillavr" width="7" height="2" anchor="center" scale="0.4 0.4 0.4"></a-text>
 
     <!-- Center Pedestal with Rotating Sculpture -->
@@ -115,9 +118,9 @@
     const infoElement = document.getElementById('current-art');
     const artpieces = [
       { title: 'Mona Lisa', desc: 'Leonardo da Vinci, 1503-1519' },
-      { title: 'Mona Lisa', desc: 'The enigmatic smile of the Renaissance' },
-      { title: 'Mona Lisa', desc: 'One of history\'s most iconic paintings' },
-      { title: 'Mona Lisa', desc: 'Housed in the Louvre Museum, Paris' }
+      { title: 'Girl with Pearl Earring', desc: 'Johannes Vermeer, 1665' },
+      { title: 'The Last Supper', desc: 'Leonardo da Vinci, 1495-1498' },
+      { title: 'The Scream', desc: 'Edvard Munch, 1893' }
     ];
 
     // Update info based on camera position periodically
