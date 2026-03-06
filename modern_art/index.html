@@ -1,55 +1,327 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>VR Modern Art Gallery</title>
+<meta charset="utf-8"/>
+<title>VR Art Gallery - Young Innovators STEM Lab</title>
+<script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
 
-<link rel="stylesheet" href="style.css">
+<style>
+body{
+margin:0;
+overflow:hidden;
+font-family:'Georgia',serif;
+}
 
-<script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+#info{
+position:absolute;
+top:20px;
+left:20px;
+color:#2c2c2c;
+background:rgba(245,240,235,0.95);
+padding:20px;
+border-radius:3px;
+border:2px solid #8b7355;
+max-width:320px;
+font-size:14px;
+z-index:100;
+box-shadow:0 4px 6px rgba(0,0,0,0.2);
+}
 
+#info h2{
+margin:0 0 12px 0;
+font-size:20px;
+color:#5d4e37;
+font-weight:bold;
+}
+</style>
 </head>
 
 <body>
 
-<a-scene>
+<div id="info">
+<h2>Asian Art Gallery</h2>
+<p>Welcome to the traditional Eastern art collection</p>
+<p id="current-art">Walk through the gallery to explore the artworks</p>
+</div>
+
+
+<a-scene background="color:#2d2415">
 
 <!-- Assets -->
 <a-assets>
-<img id="art1" src="images/art1.jpg">
-<img id="art2" src="images/art2.jpg">
-<img id="art3" src="images/art3.jpg">
-<img id="art4" src="images/art4.jpg">
-<img id="art5" src="images/art5.jpg">
-<img id="art6" src="images/art6.jpg">
+
+<img id="asian-1" src="images/modern_arts/asian_1.jpg">
+<img id="asian-2" src="images/modern_arts/asian_2.jpg">
+<img id="asian-3" src="images/modern_arts/asian_3.jpg">
+<img id="asian-4" src="images/modern_arts/asian_4.jpg">
+<img id="asian-5" src="images/modern_arts/asian_5.jpg">
+
+<img id="wood-floor" src="images/textures/brown_floor.jpg">
+<img id="temple-wall" src="images/textures/grey_wall.jpg">
+<img id="temple-ceiling" src="images/textures/light_brown.jpg">
+
 </a-assets>
 
-<!-- Floor -->
-<a-plane rotation="-90 0 0" width="16" height="16" color="#4b2e1e"></a-plane>
 
-<!-- Walls -->
-<a-box position="0 2 -8" width="16" height="4" depth="0.2" color="#e6e6e6"></a-box>
+<!-- Lighting -->
+<a-light type="ambient" intensity="0.7" color="#ffd700"></a-light>
+<a-light type="directional" position="0 10 0" intensity="1.2" color="#ffe8d6"></a-light>
 
-<a-box position="-8 2 0" width="0.2" height="4" depth="16" color="#e6e6e6"></a-box>
 
-<a-box position="8 2 0" width="0.2" height="4" depth="16" color="#e6e6e6"></a-box>
+<!-- Spotlights -->
+<a-light type="spot" position="-5.9 6 -12" rotation="-70 0 0" intensity="2.5" color="#ffdd99"></a-light>
+<a-light type="spot" position="-5.9 6 -30" rotation="-70 0 0" intensity="2.5" color="#ffdd99"></a-light>
 
-<!-- paintings -->
+<a-light type="spot" position="5.9 6 -12" rotation="-70 0 0" intensity="2.5" color="#ffdd99"></a-light>
+<a-light type="spot" position="5.9 6 -30" rotation="-70 0 0" intensity="2.5" color="#ffdd99"></a-light>
 
-<a-plane src="#art1" position="-6 2 -8" width="3" height="2"></a-plane>
-<a-plane src="#art2" position="-2 2 -8" width="3" height="2"></a-plane>
-<a-plane src="#art3" position="2 2 -8" width="3" height="2"></a-plane>
-<a-plane src="#art4" position="6 2 -8" width="3" height="2"></a-plane>
+<a-light type="spot" position="0 6 -39" rotation="-70 0 0" intensity="2.5" color="#ffdd99"></a-light>
 
-<a-plane src="#art5" position="-3 2 -2" rotation="0 90 0" width="3" height="2"></a-plane>
-<a-plane src="#art6" position="3 2 -2" rotation="0 -90 0" width="3" height="2"></a-plane>
-<!-- Light -->
-<a-light type="ambient" color="#ccc"></a-light>
-<a-light type="point" position="0 4 0" intensity="1"></a-light>
+
+<!-- Lantern Lights -->
+<a-light type="point" position="-5.9 6.5 -12" intensity="1.2" color="#ffcc66" distance="8"></a-light>
+<a-light type="point" position="-5.9 6.5 -30" intensity="1.2" color="#ffcc66" distance="8"></a-light>
+<a-light type="point" position="5.9 6.5 -12" intensity="1.2" color="#ffcc66" distance="8"></a-light>
+<a-light type="point" position="5.9 6.5 -30" intensity="1.2" color="#ffcc66" distance="8"></a-light>
+<a-light type="point" position="0 6 -39" intensity="1.2" color="#ffcc66" distance="8"></a-light>
+
+
+
+<!-- FLOOR (TEXTURED WOOD) -->
+<a-plane
+position="0 0 0"
+rotation="-90 0 0"
+width="12"
+height="80"
+material="src:#wood-floor; repeat:6 40; roughness:0.6">
+</a-plane>
+
+
+
+<!-- CEILING (DARK TEMPLE WOOD) -->
+<a-plane
+position="0 7 0"
+rotation="90 0 0"
+width="12"
+height="80"
+material="src:#temple-ceiling; repeat:6 40">
+</a-plane>
+
+
+
+<!-- LEFT WALL -->
+<a-plane
+position="-6 3.5 0"
+rotation="0 90 0"
+width="80"
+height="8"
+material="src:#temple-wall; repeat:30 4">
+</a-plane>
+
+
+
+<!-- RIGHT WALL -->
+<a-plane
+position="6 3.5 0"
+rotation="0 -90 0"
+width="80"
+height="8"
+material="src:#temple-wall; repeat:30 4">
+</a-plane>
+
+
+
+<!-- END WALL -->
+<a-plane
+position="0 3.5 -40"
+width="12"
+height="8"
+material="src:#temple-wall; repeat:6 3">
+</a-plane>
+
+
+
+<!-- Hanging Wooden Signboard -->
+
+<!-- Left Rope -->
+<a-cylinder
+position="-1.8 6.5 -5"
+radius="0.03"
+height="1"
+color="#c9a46c">
+</a-cylinder>
+
+<!-- Right Rope -->
+<a-cylinder
+position="1.8 6.5 -5"
+radius="0.03"
+height="1"
+color="#c9a46c">
+</a-cylinder>
+
+
+<!-- Wooden Board -->
+<a-box
+position="0 5.8 -5"
+width="4.5"
+height="1.2"
+depth="0.15"
+material="src:#wood-floor; roughness:0.8">
+</a-box>
+
+
+<!-- Golden Text -->
+<a-text
+value="ASIAN ART GALLERY"
+position="0 5.8 -4.9"
+align="center"
+color="#ffd700"
+scale="1.8 1.8 1.8"
+font="mozillavr"
+shader="msdf">
+</a-text>
+
+
+<!-- Glow effect -->
+<a-light
+type="point"
+position="0 5.8 -4.5"
+color="#ffd700"
+intensity="1.5"
+distance="5">
+</a-light>
+
+
+
+<!-- LEFT WALL PAINTINGS -->
+
+<a-plane
+position="-5.95 3 -12"
+rotation="0 90 0"
+width="4"
+height="3.5"
+material="src:#asian-1">
+</a-plane>
+
+<a-plane
+position="-5.95 3.5 -30"
+rotation="0 90 0"
+width="6.5"
+height="2"
+material="src:#asian-2">
+</a-plane>
+
+
+
+<!-- RIGHT WALL PAINTINGS -->
+
+<a-plane
+position="5.95 3 -12"
+rotation="0 -90 0"
+width="2.5"
+height="4.5"
+material="src:#asian-3">
+</a-plane>
+
+<a-plane
+position="5.95 3 -30"
+rotation="0 -90 0"
+width="5.5"
+height="2.5"
+material="src:#asian-4">
+</a-plane>
+
+
+
+<!-- END WALL PAINTING -->
+
+<a-plane
+position="0 2.5 -39"
+width="5.5"
+height="2.5"
+material="src:#asian-5">
+</a-plane>
+
+
 
 <!-- Camera -->
-<a-entity camera position="0 1.6 4" look-controls wasd-controls></a-entity>
+<a-entity camera look-controls wasd-controls position="0 1.6 5">
+<a-cursor></a-cursor>
+</a-entity>
 
 </a-scene>
+
+
+
+<script>
+
+const infoElement=document.getElementById('current-art');
+
+const artpieces=[
+{
+title:'The Great Wave off Kanagawa',
+desc:'Katsushika Hokusai (1760–1849)<br>c.1831 Ukiyo-e woodblock print<br>From the series Thirty-Six Views of Mount Fuji'
+},
+{
+title:'Dwelling in the Fuchun Mountains',
+desc:'Huang Gongwang (1269–1354)<br>Yuan Dynasty ink landscape scroll'
+},
+{
+title:'Lady with a Fan',
+desc:'Raja Ravi Varma (1848–1906)<br>Oil painting blending Indian and European styles'
+},
+{
+title:'Pine Trees',
+desc:'Hasegawa Tōhaku (1539–1610)<br>Minimalist Japanese ink screen painting'
+},
+{
+title:'Along the River During the Qingming Festival',
+desc:'Zhang Zeduan (1085–1145)<br>Panoramic scroll of Song Dynasty city life'
+}
+];
+
+
+setInterval(()=>{
+
+const camera=document.querySelector('[camera]');
+const pos=camera.getAttribute('position');
+
+let closest=0;
+let minDist=Infinity;
+
+const positions=[
+[-5.9,0,-12],
+[-5.9,0,-30],
+[5.9,0,-12],
+[5.9,0,-30],
+[0,0,-39]
+];
+
+positions.forEach((p,i)=>{
+
+const dist=Math.sqrt(
+Math.pow(pos.x-p[0],2)+
+Math.pow(pos.z-p[2],2)
+);
+
+if(dist<minDist){
+minDist=dist;
+closest=i;
+}
+
+});
+
+if(minDist<10){
+infoElement.innerHTML = `
+<strong>${artpieces[closest].title}</strong><br>
+${artpieces[closest].desc}
+`;
+}
+
+},500);
+</script>
+
 
 </body>
 </html>
