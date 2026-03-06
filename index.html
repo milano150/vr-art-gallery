@@ -5,6 +5,7 @@
 <meta charset="utf-8"/>
 <title>VR Art Gallery - Young Innovators STEM Lab</title>
 <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aframe-extras@7.2.0/dist/aframe-extras.min.js"></script>
 
 <style>
 body{
@@ -46,7 +47,7 @@ font-weight:bold;
 </div>
 
 
-<a-scene background="color:#2d2415">
+<a-scene background="color:#2d2415" vr-mode-ui="enabled: true">
 
 <!-- Assets -->
 <a-assets>
@@ -265,9 +266,13 @@ material="src:#asian-5">
 
 
 
-<!-- Camera -->
-<a-entity camera look-controls wasd-controls position="0 1.6 5">
+<!-- Player Rig for VR movement -->
+<a-entity id="rig" movement-controls="speed:0.15">
+
+<a-entity camera position="0 1.6 5" look-controls>
 <a-cursor></a-cursor>
+</a-entity>
+
 </a-entity>
 
 </a-scene>
