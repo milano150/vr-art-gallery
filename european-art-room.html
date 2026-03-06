@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>European Art Room - VR Gallery</title>
+  <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
+  <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
+</head>
+<body>
+  <a-scene>
+    <!-- Camera with cursor for interaction -->
+    <a-entity camera look-controls position="0 1.6 8">
+      <a-entity cursor="rayOrigin: mouse" raycaster="objects: .clickable"></a-entity>
+    </a-entity>
+
+    <!-- Lighting -->
+    <a-entity light="type: ambient; intensity: 0.7"></a-entity>
+    <a-entity light="type: point; intensity: 1.2; distance: 30" position="0 5 0"></a-entity>
+
+    <!-- Floor -->
+    <a-plane position="0 0 0" rotation="-90 0 0" width="20" height="20" color="#e0e0e0"></a-plane>
+
+    <!-- Walls -->
+    <a-box position="0 2 -10" width="20" height="4" depth="0.2" color="#fff"></a-box>
+    <a-box position="-10 2 0" width="0.2" height="4" depth="20" color="#fff"></a-box>
+    <a-box position="10 2 0" width="0.2" height="4" depth="20" color="#fff"></a-box>
+    <a-box position="0 4 0" width="20" height="0.2" depth="20" color="#ccc"></a-box>
+
+    <!-- Room Title -->
+    <a-text value="European Art Room" position="0 3.8 -9.5" color="#222" align="center" width="8"></a-text>
+
+    <!-- Paintings (as planes with frames) -->
+    <!-- Mona Lisa -->
+    <a-plane class="clickable" id="mona-lisa" src="#monaLisaImg" position="-6 2 -9.8" width="2" height="2.5"
+      event-set__enter="_event: click; _target: #info-panel; visible: true; _target: #info-title; value: 'Mona Lisa'; _target: #info-artist; value: 'Leonardo da Vinci'; _target: #info-year; value: '1503'; _target: #info-desc; value: 'The most famous portrait in the world, celebrated for its enigmatic expression and masterful technique.'"
+      material="color: #fff; side: double; transparent: true; opacity: 1"></a-plane>
+    <a-box position="-6 2 -9.7" width="2.1" height="2.6" depth="0.05" color="#8B5C2B"></a-box>
+
+    <!-- The Starry Night -->
+    <a-plane class="clickable" id="starry-night" src="#starryNightImg" position="-3 2 -9.8" width="2" height="2.5"
+      event-set__enter="_event: click; _target: #info-panel; visible: true; _target: #info-title; value: 'The Starry Night'; _target: #info-artist; value: 'Vincent van Gogh'; _target: #info-year; value: '1889'; _target: #info-desc; value: 'A swirling night sky over a quiet town, expressing emotion and movement through bold colors and brushwork.'"
+      material="color: #fff; side: double; transparent: true; opacity: 1"></a-plane>
+    <a-box position="-3 2 -9.7" width="2.1" height="2.6" depth="0.05" color="#8B5C2B"></a-box>
+
+    <!-- The Birth of Venus -->
+    <a-plane class="clickable" id="birth-venus" src="#birthVenusImg" position="0 2 -9.8" width="2" height="2.5"
+      event-set__enter="_event: click; _target: #info-panel; visible: true; _target: #info-title; value: 'The Birth of Venus'; _target: #info-artist; value: 'Sandro Botticelli'; _target: #info-year; value: '1486'; _target: #info-desc; value: 'Depicts the goddess Venus emerging from the sea, symbolizing beauty and love in Renaissance art.'"
+      material="color: #fff; side: double; transparent: true; opacity: 1"></a-plane>
+    <a-box position="0 2 -9.7" width="2.1" height="2.6" depth="0.05" color="#8B5C2B"></a-box>
+
+    <!-- The Persistence of Memory -->
+    <a-plane class="clickable" id="persistence-memory" src="#persistenceMemoryImg" position="3 2 -9.8" width="2" height="2.5"
+      event-set__enter="_event: click; _target: #info-panel; visible: true; _target: #info-title; value: 'The Persistence of Memory'; _target: #info-artist; value: 'Salvador Dalí'; _target: #info-year; value: '1931'; _target: #info-desc; value: 'Surreal melting clocks in a dreamlike landscape, exploring the concept of time and reality.'"
+      material="color: #fff; side: double; transparent: true; opacity: 1"></a-plane>
+    <a-box position="3 2 -9.7" width="2.1" height="2.6" depth="0.05" color="#8B5C2B"></a-box>
+
+    <!-- The Night Watch -->
+    <a-plane class="clickable" id="night-watch" src="#nightWatchImg" position="6 2 -9.8" width="2" height="2.5"
+      event-set__enter="_event: click; _target: #info-panel; visible: true; _target: #info-title; value: 'The Night Watch'; _target: #info-artist; value: 'Rembrandt'; _target: #info-year; value: '1642'; _target: #info-desc; value: 'A dynamic group portrait of a city militia, renowned for its dramatic use of light and composition.'"
+      material="color: #fff; side: double; transparent: true; opacity: 1"></a-plane>
+    <a-box position="6 2 -9.7" width="2.1" height="2.6" depth="0.05" color="#8B5C2B"></a-box>
+
+    <!-- Info Panel (hidden by default) -->
+    <a-entity id="info-panel" visible="false" position="0 2 -7">
+      <a-plane width="4" height="2.5" color="#222" opacity="0.95"></a-plane>
+      <a-text id="info-title" value="" position="0 1 0.01" color="#fff" align="center" width="3"></a-text>
+      <a-text id="info-artist" value="" position="0 0.5 0.01" color="#fff" align="center" width="3"></a-text>
+      <a-text id="info-year" value="" position="0 0 0.01" color="#fff" align="center" width="3"></a-text>
+      <a-text id="info-desc" value="" position="0 -0.7 0.01" color="#fff" align="center" width="3"></a-text>
+      <a-text value="Click anywhere to close" position="0 -1.1 0.01" color="#aaa" align="center" width="2"></a-text>
+    </a-entity>
+
+    <!-- Close info panel on background click -->
+    <a-plane position="0 2 -7" width="4" height="2.5" color="#000" opacity="0" 
+      event-set__enter="_event: click; _target: #info-panel; visible: false"></a-plane>
+
+    <!-- Assets: Replace these URLs with your own images if needed -->
+    <a-assets>
+      <img id="monaLisaImg" src="https://uploads7.wikiart.org/images/leonardo-da-vinci/mona-lisa.jpg" />
+      <img id="starryNightImg" src="https://uploads7.wikiart.org/images/vincent-van-gogh/the-starry-night-1889.jpg" />
+      <img id="birthVenusImg" src="https://uploads7.wikiart.org/images/sandro-botticelli/the-birth-of-venus.jpg" />
+      <img id="persistenceMemoryImg" src="https://uploads7.wikiart.org/images/salvador-dali/the-persistence-of-memory-1931.jpg" />
+      <img id="nightWatchImg" src="https://uploads7.wikiart.org/images/rembrandt/the-night-watch-1642.jpg" />
+    </a-assets>
+  </a-scene>
+</body>
+</html>
