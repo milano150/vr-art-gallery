@@ -18,21 +18,30 @@
 <img id="art1" src="images/art1.jpg">
 <img id="art2" src="images/art2.jpg">
 <img id="art3" src="images/art3.jpg">
+<img id="art4" src="images/art4.jpg">
+<img id="art5" src="images/art5.jpg">
+<img id="art6" src="images/art6.jpg">
 </a-assets>
 
 <!-- Floor -->
-<a-plane rotation="-90 0 0" width="20" height="20" color="#222"></a-plane>
+<a-plane rotation="-90 0 0" width="16" height="16" color="#4b2e1e"></a-plane>
 
 <!-- Walls -->
-<a-box position="0 2 -8" width="16" height="4" depth="0.2" color="#ffffff"></a-box>
-<a-box position="-8 2 0" width="0.2" height="4" depth="16" color="#ffffff"></a-box>
-<a-box position="8 2 0" width="0.2" height="4" depth="16" color="#ffffff"></a-box>
+<a-box position="0 2 -8" width="16" height="4" depth="0.2" color="#e6e6e6"></a-box>
 
-<!-- Paintings -->
-<a-plane src="#art1" position="-4 2 -7.9" width="3" height="2"></a-plane>
-<a-plane src="#art2" position="0 2 -7.9" width="3" height="2"></a-plane>
-<a-plane src="#art3" position="4 2 -7.9" width="3" height="2"></a-plane>
+<a-box position="-8 2 0" width="0.2" height="4" depth="16" color="#e6e6e6"></a-box>
 
+<a-box position="8 2 0" width="0.2" height="4" depth="16" color="#e6e6e6"></a-box>
+
+<!-- paintings -->
+
+<a-plane src="#art1" position="-6 2 -8" width="3" height="2"></a-plane>
+<a-plane src="#art2" position="-2 2 -8" width="3" height="2"></a-plane>
+<a-plane src="#art3" position="2 2 -8" width="3" height="2"></a-plane>
+<a-plane src="#art4" position="6 2 -8" width="3" height="2"></a-plane>
+
+<a-plane src="#art5" position="-3 2 -2" rotation="0 90 0" width="3" height="2"></a-plane>
+<a-plane src="#art6" position="3 2 -2" rotation="0 -90 0" width="3" height="2"></a-plane>
 <!-- Light -->
 <a-light type="ambient" color="#ccc"></a-light>
 <a-light type="point" position="0 4 0" intensity="1"></a-light>
